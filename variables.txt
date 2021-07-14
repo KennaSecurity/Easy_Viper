@@ -1,0 +1,4 @@
+# Varible Setup:
+VI_Plus_API_Key="YourAPIKey"
+Updated_Since="2021-07-11T00:00:00+0000"
+API="https://api.kennasecurity.com"
