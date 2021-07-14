@@ -27,10 +27,10 @@ Easy Viper was built and tested on MacOS 11.4 and requires the following softwar
 1. Clone the repo
 
    ```sh
-   git clone https://github.com/github_username/repo_name.git
+   git clone https://github.com/KennaSecurity/Easy_Viper
    ```
 
-2. Edit Varibles.txt
+2. Edit varibles.txt
 
   ```sh
   VI_Plus_API_Key="YourAPIKey"
