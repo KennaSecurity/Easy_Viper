@@ -2,7 +2,7 @@
 
 ## About The Project
 
-Easy Viper allows you to build a local ELK Stack quickly using docker-compose and import data directly from the Kenna VI+ API using Viper.
+Easy Viper allows you to build a local [Elastic Stack](https://www.elastic.co/elastic-stack/) quickly using docker-compose and import data directly from the Kenna VI+ API using Viper.
 
 ### Built With
 
