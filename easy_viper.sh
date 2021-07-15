@@ -3,6 +3,18 @@
 #Import Varibles
 source variables.txt
 
+# Create variables.txt update with yesterday's date.
+
+change_updated () {
+    yday=$(date -v-1d +%Y-%m-%d)
+
+    # Write out varables.txt.
+    sed -r 's/Updated_Since="[0-9]{4}-[0-9]{2}-[0-9]{2}T/Updated_Since="'$yday'T/g' variables.txt > variables.tmp
+    rm variables.txt
+    mv variables.tmp variables.txt
+}
+
+# Pull in command line switch and make it Upper case.
 op=$(echo "$1" |  tr '[:lower:]' '[:upper:]')
 
 case $op in
@@ -39,6 +51,8 @@ case $op in
         "http://localhost:5601/api/kibana/settings/theme:darkMode" \
         -d '{ "value": true}'
 
+    change_updated
+    
     echo "Completed, this Kibana console should now be available here: http://localhost:5601/"
     ;;
 
@@ -68,12 +82,13 @@ case $op in
 
   UPDATE)
     # Run Viper To Update Data
-    docker run -it --env VI_Plus_API_Key="$VI_Plus_API_Key" --env Updated_Since="$Updated_Since" --env API="$API" --mount type=bind,source="$(pwd)"/data,target=/data kennasecurity/viper
+    #docker run -it --env VI_Plus_API_Key="$VI_Plus_API_Key" --env Updated_Since="$Updated_Since" --env API="$API" --mount type=bind,source="$(pwd)"/data,target=/data kennasecurity/viper
 
     # Upload Data To Index:
-    elasticsearch_loader --index vi --timeout 30 --progress  --delete json data/*.json --lines
+    #elasticsearch_loader --index vi --timeout 30 --progress  --delete json data/*.json --lines
 
-    read "Shall we update the variables.txt file with "
+    change_updated
+
     echo "Data Updated, appropriate Containers are up and available here: http://localhost:5601/"
     ;;
 
