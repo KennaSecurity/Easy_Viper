@@ -45,31 +45,31 @@ You will need to set the API to match your host as [described here](https://apid
 ### To Start Easy Viper For The First Time
 
   ```sh
-    ./easy_viper_build.sh
+    ./easy_viper.sh build
    ```
 
 ### To Stop Easy Viper
 
   ```sh
-    ./easy_viper_down.sh
+    ./easy_viper.sh down
    ```
 
 ### To Start Easy Viper
 
   ```sh
-    ./easy_viper_up.sh
+    ./easy_viper.sh down
    ```
 
 ### To Update Easy Viper
 
   ```sh
-    ./easy_viper_update.sh
+    ./easy_viper.sh update
    ```
 
 ### To Delete The Easy Viper Stack
 
   ```sh
-    ./easy_viper_delete.sh
+    ./easy_viper.sh update
    ```
 
 ### DashBoard Access
