@@ -73,7 +73,7 @@ case $op in
     # Upload Data To Index:
     elasticsearch_loader --index vi --timeout 30 --progress  --delete json data/*.json --lines
 
-    read "Shall we update the variables.txt file with "
+    read -r "Shall we update the variables.txt file with "
     echo "Data Updated, appropriate Containers are up and available here: http://localhost:5601/"
     ;;
 
