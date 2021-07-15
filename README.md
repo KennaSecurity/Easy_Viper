@@ -56,7 +56,7 @@ You will need to set the API to match your host as [described here](https://apid
 ### To Start Easy Viper
 
   ```sh
-    ./easy_viper.sh down
+    ./easy_viper.sh up
    ```
 
 ### To Update Easy Viper
@@ -68,7 +68,7 @@ You will need to set the API to match your host as [described here](https://apid
 ### To Delete The Easy Viper Stack
 
   ```sh
-    ./easy_viper.sh update
+    ./easy_viper.sh delete
    ```
 
 ### DashBoard Access
