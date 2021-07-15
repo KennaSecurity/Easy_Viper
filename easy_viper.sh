@@ -9,7 +9,7 @@ change_updated () {
     yday=$(date -v-1d +%Y-%m-%d)
 
     # Write out varables.txt.
-    sed -r 's/Updated_Since=[0-9]{4}-[0-9]{2}-[0-9]{2}T/Updated_Since='$yday'T/g' variables.txt > variables.tmp
+    sed -r "s/Updated_Since=[0-9]{4}-[0-9]{2}-[0-9]{2}T/Updated_Since="$yday"T/g" variables.txt > variables.tmp
     rm variables.txt
     mv variables.tmp variables.txt
 }
@@ -82,10 +82,10 @@ case $op in
 
   UPDATE)
     # Run Viper To Update Data
-    #docker run -it --env VI_Plus_API_Key="$VI_Plus_API_Key" --env Updated_Since="$Updated_Since" --env API="$API" --mount type=bind,source="$(pwd)"/data,target=/data kennasecurity/viper
+    docker run -it --env VI_Plus_API_Key="$VI_Plus_API_Key" --env Updated_Since="$Updated_Since" --env API="$API" --mount type=bind,source="$(pwd)"/data,target=/data kennasecurity/viper
 
     # Upload Data To Index:
-    #elasticsearch_loader --index vi --timeout 30 --progress  --delete json data/*.json --lines
+    elasticsearch_loader --index vi --timeout 30 --progress  --delete json data/*.json --lines
 
     change_updated
 
