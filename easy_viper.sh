@@ -3,7 +3,6 @@
 #Import Varibles
 source variables.txt
 
-op=$1
 op=$(echo "$1" |  tr '[:lower:]' '[:upper:]')
 
 case $op in
