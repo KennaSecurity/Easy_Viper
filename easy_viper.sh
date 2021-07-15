@@ -5,14 +5,11 @@ source variables.txt
 
 # Create variables.txt update with yesterday's date.
 
-change_updated () {
-    yday=$(date -v-1d +%Y-%m-%d)
-
-    # Write out varables.txt.
-    sed -r "s/Updated_Since=[0-9]{4}-[0-9]{2}-[0-9]{2}T/Updated_Since="$yday"T/g" variables.txt > variables.tmp
-    rm variables.txt
-    mv variables.tmp variables.txt
-}
+Updated_Since_On_Build=$(date -v-30d -u +"%Y-%m-%dT%H:%M:%SZ")
+#Uncomment For All Data On Build:
+#Updated_Since_On_Build="2000-01-01T00:00:00+0000"
+Updated_Since_Last_Week=$(date -v-7d -u +"%Y-%m-%dT%H:%M:%SZ") 
+Updated_Since_Yeserday=$(date -v-2d -u +"%Y-%m-%dT%H:%M:%SZ") 
 
 # Pull in command line switch and make it Upper case.
 op=$(echo "$1" |  tr '[:lower:]' '[:upper:]')
@@ -28,7 +25,7 @@ case $op in
     docker-compose up -d
 
     # Run Viper To Download Data
-    docker run -it --env VI_Plus_API_Key="$VI_Plus_API_Key" --env Updated_Since="$Updated_Since" --env API="$API" --mount type=bind,source="$(pwd)"/data,target=/data kennasecurity/viper
+    docker run -it --env VI_Plus_API_Key="$VI_Plus_API_Key" --env Updated_Since="$Updated_Since_On_Build" --env API="$API" --mount type=bind,source="$(pwd)"/data,target=/data kennasecurity/viper
 
     # Setup VI Index
     curl -XPUT 'http://:9200/vi?pretty' -H 'Content-Type: application/json' -d'{"settings" : {"index" : {"number_of_shards" : 3, "number_of_replicas" : 0 }}}'
@@ -72,7 +69,7 @@ case $op in
       docker-compose up -d
 
       # Run Viper To Update Data
-      docker run -it --env VI_Plus_API_Key="$VI_Plus_API_Key" --env Updated_Since="$Updated_Since" --env API="$API" --mount type=bind,source="$(pwd)"/data,target=/data kennasecurity/viper
+      docker run -it --env VI_Plus_API_Key="$VI_Plus_API_Key" --env Updated_Since="$Updated_Since_Yesterday" --env API="$API" --mount type=bind,source="$(pwd)"/data,target=/data kennasecurity/viper
 
       # Upload Data To Index:
       elasticsearch_loader --index vi --timeout 30 --progress  --delete json data/*.json --lines
@@ -82,7 +79,7 @@ case $op in
 
   UPDATE)
     # Run Viper To Update Data
-    docker run -it --env VI_Plus_API_Key="$VI_Plus_API_Key" --env Updated_Since="$Updated_Since" --env API="$API" --mount type=bind,source="$(pwd)"/data,target=/data kennasecurity/viper
+    docker run -it --env VI_Plus_API_Key="$VI_Plus_API_Key" --env Updated_Since="$Updated_Since_Last_Week" --env API="$API" --mount type=bind,source="$(pwd)"/data,target=/data kennasecurity/viper
 
     # Upload Data To Index:
     elasticsearch_loader --index vi --timeout 30 --progress  --delete json data/*.json --lines
