@@ -9,7 +9,7 @@ Updated_Since_On_Build=$(date -v-30d -u +"%Y-%m-%dT%H:%M:%SZ")
 #Uncomment For All Data On Build:
 #Updated_Since_On_Build="2000-01-01T00:00:00+0000"
 Updated_Since_Last_Week=$(date -v-7d -u +"%Y-%m-%dT%H:%M:%SZ") 
-Updated_Since_Yeserday=$(date -v-2d -u +"%Y-%m-%dT%H:%M:%SZ") 
+Updated_Since_Yesterday=$(date -v-2d -u +"%Y-%m-%dT%H:%M:%SZ") 
 
 # Pull in command line switch and make it Upper case.
 op=$(echo "$1" |  tr '[:lower:]' '[:upper:]')
