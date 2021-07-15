@@ -34,8 +34,7 @@ Easy Viper was built and tested on MacOS 11.4 and requires the following softwar
 
   ```sh
   VI_Plus_API_Key="YourAPIKey"
-  Updated_Since="2021-07-11T00:00:00+0000"
-  API="https://api.kennasecurity.com"
+  API="api.kennasecurity.com"
   ```
 
 You will need to set the API to match your host as [described here](https://apidocs.kennasecurity.com/reference#authentication). It will default to the base API of [api.kennasecurity.com](https://api.kennasecurity.com).
@@ -45,31 +44,31 @@ You will need to set the API to match your host as [described here](https://apid
 ### To Start Easy Viper For The First Time
 
   ```sh
-    ./easy_viper_build.sh
+    ./easy_viper.sh build
    ```
 
 ### To Stop Easy Viper
 
   ```sh
-    ./easy_viper_down.sh
+    ./easy_viper.sh down
    ```
 
 ### To Start Easy Viper
 
   ```sh
-    ./easy_viper_up.sh
+    ./easy_viper.sh down
    ```
 
 ### To Update Easy Viper
 
   ```sh
-    ./easy_viper_update.sh
+    ./easy_viper.sh update
    ```
 
 ### To Delete The Easy Viper Stack
 
   ```sh
-    ./easy_viper_delete.sh
+    ./easy_viper.sh update
    ```
 
 ### DashBoard Access
@@ -81,9 +80,13 @@ Once the shell script has finished running you can access the [Kibana Dashboard]
 * Auto Import Dashboards
 * Scheduled Viper Runs
 
-## Notes
+## Data Notes
 
-Depending on your internet speed and the amount of data requested, startup can take 10 minutes to more than an hour.
+Depending on your internet speed and the amount of data requested, startup can take 10 minutes to more than an hour. By Default:
+
+* Bulid Brings In The Last 30 Days Of Data.
+* Update Brings In The Last 7 Days Of Data.
+* Up Brings In The Last 2 Days Of Data.
 
 ## Contributing
 
