@@ -14,7 +14,7 @@ Easy Viper allows you to build a local [Elastic Stack](https://www.elastic.co/el
 
 ### Prerequisites
 
-Easy Viper was built and tested on MacOS 11.4 and requires the following software:
+Easy Viper was built and tested on nacOS 11.4 and requires the following software:
 
 * [Docker](https://docs.docker.com/docker-for-mac/install/)
   * [Minimum of 4GBs of Ram](https://docs.docker.com/docker-for-mac/)
@@ -24,7 +24,7 @@ Easy Viper was built and tested on MacOS 11.4 and requires the following softwar
 
 ### Installation
 
-1. Clone the repo
+1. Clone the repository
 
    ```sh
    git clone https://github.com/KennaSecurity/Easy_Viper
