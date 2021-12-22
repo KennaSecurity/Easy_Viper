@@ -30,7 +30,7 @@ Easy Viper was built and tested on nacOS 11.4 and requires the following softwar
    git clone https://github.com/KennaSecurity/Easy_Viper
    ```
 
-2. Edit varibles.txt
+2. Edit variables.txt
 
   ```sh
   VI_Plus_API_Key="YourAPIKey"
